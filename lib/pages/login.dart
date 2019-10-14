@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 TextEditingController instanceController = new TextEditingController()
-  ..text = "play.dhis2.org/2.29";
+  ..text = "https://play.dhis2.org/2.29";
 TextEditingController usernameController = new TextEditingController()
   ..text = "admin";
 TextEditingController passwordController = new TextEditingController()
@@ -74,9 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             HttpHeaders.authorizationHeader: "Basic $encodedCredentials",
           };
           var response = http.get(
-              "https://" +
-                  instanceAddress +
-                  "/api/indicators.json?paging=false",
+              instanceAddress + "/api/indicators.json?paging=false",
               headers: headers);
           response.then((onValue) {
             var data = onValue.body;
